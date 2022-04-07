@@ -37,11 +37,30 @@ body {
   display: flex;
   flex-flow: column;
   font-size: .8rem;
+  opacity: 0;
 }
 .legendItem {
   display: flex;
   height: 1.1rem;
   align-items: center;
+}
+#legend.off .legendItem {
+  display: none;
+}
+#legendHeader {
+  color: #68788e;
+  font-weight: bold;
+  text-align: center;
+  margin-top: .25rem;
+}
+#legend.off #legendHeader {
+  margin-top: 0;
+}
+#legendHeader::after {
+  content: "CLICK TO HIDE";
+}
+#legend.off #legendHeader::after {
+  content: "CLICK FOR LEGEND";
 }
 .legendBox {
   width: .9rem;
@@ -51,4 +70,48 @@ body {
 }
 #legendItem6 .legendBox {
   background-image: url("./hatch.png");
+}
+#header {
+  top: .5rem;
+  left: .5rem;
+  position: absolute;
+  background: white;
+  color: #8495a9;
+  box-shadow: 1px 1px 4px #001533;
+  display: flex;
+  font-family: ABCSansNovaBlack, "Arial Black", -webkit-bodyHelvetica, sans-serif;
+  flex-flow: column;
+  font-size: .9rem;
+}
+#header div {
+  padding: .25rem;
+  border-bottom: .5px solid #8495a9;
+}
+#header div.on {
+  background: #009de5;
+  color: white;
+  border-bottom: .5px solid #009de5;
+  pointer-events: none;
+}
+
+@media only screen and (max-width: 500px) {
+  #legend {
+    right: .5rem;
+    bottom: .5rem;
+    padding: .25rem;
+    font-size: .75rem;
+  }
+  .legendItem {
+    height: 1rem;
+  }
+  #legendHeader::after {
+    content: "TOUCH TO HIDE";
+  }
+  #legend.off #legendHeader::after {
+    content: "TOUCH FOR LEGEND";
+  }
+  .legendBox {
+    width: .8rem;
+    height: .8rem;
+  }
 }
